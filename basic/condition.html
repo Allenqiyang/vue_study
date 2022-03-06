@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditional rendering</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+    <div id="container">
+        <h2 v-show="false">Welcome to {{name}}</h2>
+        <!-- show只是不显示，if是直接将结构删掉了 -->
+        <h2 v-if="false">Welcome to {{name}}</h2>
+        <h2>The current value of n:{{n}}</h2>
+        <button @click="n++">n+1</button>
+        <!-- 要用连续的else if这几个h要连在一起 -->
+        <h2 v-if="n==1">Angular</h2>
+        <h2 v-else-if="n==2">React</h2>
+        <h2 v-else-if="n==3">Vue</h2>
+        <h2 v-else>haha</h2>
+        <!-- v-if和template的配合使用，使用完template就消失不影响结构 -->
+        <template v-if="n==1">
+            <h2>Allen</h2>
+            <h2>is</h2>
+            <h2>genius</h2>
+        </template>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip=false;
+        new Vue({
+            el:'#container',
+            data: {
+                name: 'Allen',
+                n:0
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic use of events</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="container">
+        <h2>Welcome to {{name}}</h2>
+        <!-- <button v-on:click="showInfo">Click to show info</button> -->
+        <button @click="showInfo1">Click to show info</button>
+        <button @click="showInfo2($event,66)">Click to show info</button>   <!-- 用这个可以传参 -->
+    </div>
+    <script>
+        Vue.config.productionTip=false;
+        const vm = new Vue({
+            el:'#container',
+            data: {
+                name:'Luowai',
+            },
+            methods: {
+                showInfo1(event){
+                    // console.log(event);
+                    console.log(this);  //此处的this是vm
+                    alert('Hello dear students');
+                },
+                showInfo2(event,number) {
+                    console.log(event,number);
+                    alert('Hello dear students!!!');
+                }
+            }
+        })
+    </script>
+</body>
+</html>

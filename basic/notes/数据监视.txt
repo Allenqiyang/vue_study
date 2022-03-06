@@ -1,0 +1,17 @@
+Vue会检测data中的所有层次的数据
+
+检测对象中的数据
+通过setter实现监视，且要在new Vue是就传入要监视的数据
+1.对象中后追加的属性，Vue默认不做响应式处理
+2.如需给后添加的属性做响应式，就要使用两个API：
+	Vue.set(target,key,value) or vm.$set(target,key,value)
+
+检测数组中的数据
+通过包裹数组更新元素的方法实现，本质是
+        1.调用原生js中对应的方法对数组进行更新
+        2.重新解析模板，进而更新页面
+
+在Vue中更新数组中的某个元素一定要用这些方法:
+        1.API:push( ),pop( ),shift( ),unshift( ),splice( ),sort( ),reverse( )
+        2.Vue.set( ) or vm.$set()
+#Vue.set( ) and vm.$set( ) 不能给vm或vm的根数据对象添加属性

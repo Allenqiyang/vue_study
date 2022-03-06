@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+    <div id="container">
+        <!-- 使用v-for遍历数组 -->
+        <h2>Person list</h2>
+        <!-- <ul>
+            <li v-for="(p,index) in persons">
+                {{p}}-{{index}}     index是索引，p是数组元素
+            </li>
+        </ul> -->
+        <ul>
+            <li v-for="p in persons" :key="p.id">
+                {{p.name}}-{{p.age}}
+            </li>
+        </ul>
+        
+        <!-- 使用v-for遍历对象 -->
+        <h2>Car information</h2>
+        <ul>
+            <li v-for="(value,key) in car">
+                {{key}}-{{value}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+        new Vue({
+            el:"#container",
+            data: {
+                persons:[
+                    {id:001,name:'Tony',age:15},
+                    {id:002,name:'Tom',age:12},
+                    {id:003,name:'Allen',age:20}
+                ],
+                car:{
+                    name:'lamborghini',
+                    price:'10000',
+                    color:'white'
+                }
+            }
+        })
+    </script>
+</body>
+</html>
