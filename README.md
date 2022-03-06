@@ -82,7 +82,7 @@ scoped指定作用域是当前文件，防止冲突
 1.一种组件间通信的方式,适用于: 子组件 ===> 父组件<br>
 2.使用场景：A是父组件，B是子组件，B给A传数据，在A中给B绑定自定义事件(事件的回调在A中)<br>
 3.绑定自定义事件：<br>
-第一种：在父组件中<Demo @happy="test"> or <Demo v-on:happy="test"><br>
+第一种：在父组件中`<Demo @happy="test">` or `<Demo v-on:happy="test"><br>`
 第二种：在父组件中
 ```
 <Demo ref="demo"/>
