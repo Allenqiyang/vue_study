@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changing mood</title>
+    <script type="text/javascript" src="vue.js"></script>
+    <style type="text/css">
+        .basic{
+            height:150px;
+            width:300px;
+            text-align:center;
+            border:1px solid black;
+        }
+        .happy{
+            background-image: linear-gradient(to bottom right,red,yellow);
+            border: 2px solid red;
+        }
+        .sad{
+            background-color: yellowgreen;
+            border: 2px springgreen solid;
+        }
+        .normal{
+            background-color: skyblue;
+        }
+        .style1{
+            background-color: lightcoral;
+        }
+        .style2{
+            color: red;
+            text-shadow: 2px 2px 4px orange;
+        }
+        .style3{
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <!-- 绑定class样式--字符串写法 -->
+        <div class="basic" :class="mood" @click="changeMood">{{name}}</div><br>
+        <!-- 绑定class样式--数组写法 -->
+        <div class="basic" :class="classArr">{{name}}</div><br>
+        <!-- 绑定class样式--对象写法 -->
+        <div class="basic" :class="classobj">{{name}}</div>
+    </div>
+    <script>
+        Vue.config.productionTip=false;
+        const vm = new Vue({
+            el:'#container',
+            data: {
+                name:'Mood',
+                mood:'normal',
+                // 可以使用shift和push来将数组中的元素删除和增加
+                classArr:['style1','style2','style3'],
+                classobj:{
+                    style1:false,
+                    style2:true,
+                    style3:true
+                }
+            },
+            methods: {
+                changeMood(){
+                    const arr=['happy','sad','normal'];
+                    this.mood=arr[Math.floor(Math.random()*3)];
+                }
+            },
+        })
+    </script>
+</body>
+</html>

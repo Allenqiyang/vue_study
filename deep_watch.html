@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watcher</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+    <div id="container">
+        <h2>The weather is {{result}} today</h2>
+        <button @click="changeWeather">change weather</button>
+        <hr/>
+        <h3>a:{{numbers.a}}</h3>
+        <button @click="numbers.a++">add</button>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip=false;
+        const vm = new Vue({
+            el:'#container',
+            data: {
+                isHot:true,
+                numbers:{
+                    a:1,
+                    b:1
+                },
+            },
+            computed: {
+                result(){
+                    return this.isHot ? 'hot' : 'cool'
+                }
+            },
+            methods: {
+                changeWeather(){
+                    this.isHot=!this.isHot;
+                }
+            },
+            watch:{
+                isHot:{
+                    // handler会在其对象被修改时调用,这里是isHot
+                    handler(newValue,oldValue){
+                        console.log(newValue,oldValue);
+                    }
+                },
+                // 检测多级结构中某一个属性的变化
+                /* 'numbers.a':{
+                    handler(newValue,oldValue){
+                        console.log('a change');
+                    }
+                }, */
+                // 检测多级结构中所有属性的变化
+                numbers:{
+                    deep:true,  //默认关闭
+                    handler(newValue,oldValue){
+                        console.log('numbers change');
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

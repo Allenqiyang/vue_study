@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v- instructions</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+    <div id="container">
+        <div>Hello,{{name}}!</div>
+        <div v-html="str"></div>
+        <button @click="n++">add</button>
+        <h3 v-once>The initial value of n is {{n}}</h3>
+        <h3>value of n is {{n}}</h3>
+        <h3 v-pre>Vue is easy</h3>
+        <!-- <h3 v-pre>value of n is {{n}}</h3>     output will be {{n}},it will not be compiled -->
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+            el:"#container",
+            data:{
+                name:"Allen",
+                str:"<h3>Genius</h3>",
+                n:1
+            }
+        })
+    </script>
+</body>
+</html>

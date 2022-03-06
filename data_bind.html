@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data binding</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+    <!--v-model:value可以简写为v-model,因为默认收集的就是value值
+        双向绑定一般用于表单类元素上-->
+    <div id="container">
+        单向数据绑定:<input type="text" v-bind:value="name"><br/>
+        双向数据绑定:<input type="text" v-model:value="name">
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip=false;
+        new Vue({
+            el:'#container',
+            data: {
+                name: 'Allen'
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example of name using computing attributes</title>
+    <script type="text/javascript" src="vue.js"></script>
+    <style>
+        #container {
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        Firstname:<input type="text" v-model:value="firstName"><br><br>
+        Lastname:<input type="text" v-model:value="lastName"><br><br>
+        Whole Name:<span>{{fullName}}</span><br><br>
+        <!-- 使用计算属性如果多次使用只会调用一次,计算属性会有缓存
+        只有当该计算属性所依赖的数据发生变化才会再次调用
+        Whole Name:<span>{{fullName}}</span><br><br>
+        Whole Name:<span>{{fullName}}</span><br><br>
+        Whole Name:<span>{{fullName}}</span><br><br>
+        Whole Name:<span>{{fullName}}</span><br><br> -->
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip=false;
+        const vm = new Vue({
+            el:'#container',
+            data: {
+                firstName:'Tony',
+                lastName:'Stark'
+            },
+            computed: {
+                fullName:{
+                    get(){
+                        console.log('get is called');
+                        // console.log(this);      此处的this指向的是vm
+                        return this.firstName+'-'+this.lastName;
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
