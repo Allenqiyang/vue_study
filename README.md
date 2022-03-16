@@ -467,7 +467,7 @@ this.$router.replace({
 })
 
 this.$router.forward()	//前进
-this.$router.back()	   //后退
+this.$router.back()	//后退
 this.$router.go()	//可以指定跳转方向和长度
 ```
 
