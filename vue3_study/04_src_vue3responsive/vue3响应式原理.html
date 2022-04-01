@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue3 响应式原理</title>
+</head>
+<body>
+    <script>
+        let person = {
+            name: 'John',
+            age: 36
+        }
+
+        // 模拟实现 Vue3 响应式
+        const p = new Proxy(person,{
+            //读取p的某个属性时调用
+            get(target,propName) {
+                console.log(`someone get the ${propName} on p`)
+                return Reflect.get(target,propName)
+            },
+            //修改p的某个属性时，给p追加属性时调用
+            set(target,propName,value){
+                console.log(`someone set the ${propName} on p, going to update the page`)
+                Reflect.set(target,propName,value)
+            },
+            //删除p的某个属性时调用
+            deleteProperty(target,propName){
+                console.log(`someone delete the ${propName} on p`)
+                return Reflect.deleteProperty(target,propName)
+            }
+        })
+    </script>
+</body>
+</html>
