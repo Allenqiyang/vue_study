@@ -112,6 +112,7 @@ Promise.all = function(promises){
 
 Promise.race = function(promises){
     return new Promise((resolve, reject) => {
+        //因为Promise的状态值只能改变一次，哪个先改变那结果就固定
         promises.forEach(item => {
             item.then(value=>{
                 resolve(value)
