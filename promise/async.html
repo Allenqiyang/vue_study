@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async</title>
+</head>
+<body>
+    <script>
+        async function demo() {
+            return 'hello'
+        }
+        console.log(demo())     //结果为hello的promise对象
+        
+        //async function 返回结果和then的一模一样
+        async function main(){
+            // return 111
+            return new Promise((resolve, reject) => {
+                resolve('ok')
+                // reject('error')
+            })
+            // throw 'oh no'
+        }
+        const result = main()
+        console.log(result)
+    </script>
+</body>
+</html>
